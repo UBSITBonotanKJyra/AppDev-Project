@@ -1,0 +1,36 @@
+<div class="vault-container">
+  <div class="header">
+    <h2>🔐 SafeStash Vault</h2>
+  </div>
+
+  <div class="card-grid">
+    @for (item of service.credentials(); track item.id) {
+      <div class="card" [class.danger]="item.isLeaked">
+        <div class="card-header">
+          <h3>{{ item.siteName }}</h3>
+          <span class="badge">{{ item.category }}</span>
+        </div>
+        
+        <div class="details">
+          <p><strong>Username:</strong> {{ item.username }}</p>
+          <p><strong>Password:</strong> 
+            {{ visiblePasswords.has(item.id) ? item.password : '••••••••' }}
+          </p>
+          
+          <!-- NEW: Security Badge Integration -->
+          <app-security-status [isLeaked]="item.isLeaked || false"></app-security-status>
+        </div>
+
+        <div class="actions">
+          <button (click)="togglePassword(item.id)" title="Toggle Visibility">👁️</button>
+          <button (click)="checkSecurity(item)" title="Check Breach Status">🛡️ Check</button>
+          <button (click)="service.delete(item.id)" class="del-btn" title="Delete Entry">🗑️</button>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <p class="empty-msg">Your vault is empty. Add a credential to get started.</p>
+      </div>
+    }
+  </div>
+</div>
