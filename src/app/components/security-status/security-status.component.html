@@ -1,1 +1,3 @@
-<p>security-status works!</p>
+<div class="status-badge" [ngClass]="isLeaked ? 'leaked' : 'safe'">
+  {{ isLeaked ? '⚠️ BREACH FOUND' : '✅ SECURE' }}
+</div>

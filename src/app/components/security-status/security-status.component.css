@@ -1,0 +1,25 @@
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 6px;
+  border: 2px solid #ffc0cb;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+  transition: 0.3s ease;
+}
+
+.safe {
+  background: #fff0f6;
+  color: #ff69b4;
+}
+
+.leaked {
+  background: #ffe4ec;
+  color: #ff1493;
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,124 @@
+/* Container */
+.vault-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #ffe4ec, #ffd6e8);
+  min-height: 100vh;
+  font-family: "Comic Sans MS", "Poppins", cursive;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  color: #ff69b4;
+  font-size: 1.8rem;
+}
+
+/* Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: #fff0f6;
+  border-radius: 20px;
+  padding: 15px;
+  border: 2px solid #ffc0cb;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+  transition: 0.3s;
+}
+
+/* Danger state */
+.card.danger {
+  border-color: #ff8fab;
+  background: #ffe4ec;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Header inside card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  color: #ff1493;
+  font-size: 1.1rem;
+}
+
+/* Badge */
+.badge {
+  background: #ffc0cb;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+}
+
+/* Details */
+.details {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.details strong {
+  color: #ff69b4;
+}
+
+/* Actions */
+.actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.actions button {
+  border: none;
+  background: #ffb6c1;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+/* Hover buttons */
+.actions button:hover {
+  background: #ff69b4;
+  transform: scale(1.1);
+}
+
+/* Delete button */
+.del-btn {
+  background: #ff8fab;
+}
+
+.del-btn:hover {
+  background: #ff1493;
+}
+
+/* Empty state */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+}
+
+.empty-msg {
+  color: #ff69b4;
+  font-size: 1rem;
+}

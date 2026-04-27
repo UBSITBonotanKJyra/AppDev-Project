@@ -1,0 +1,55 @@
+/* Main layout background */
+.main-layout {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffe4ec, #ffd6e8);
+  font-family: "Comic Sans MS", "Poppins", cursive;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: #ff69b4;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #ff85a2;
+  font-size: 0.95rem;
+}
+
+/* Grid layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+/* Sections */
+.form-section,
+.vault-section {
+  background: #fff0f6;
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid #ffc0cb;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+  transition: 0.3s;
+}
+
+/* Hover lift effect */
+.form-section:hover,
+.vault-section:hover {
+  transform: translateY(-3px);
+}
+
+/* Responsive (mobile) */
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
