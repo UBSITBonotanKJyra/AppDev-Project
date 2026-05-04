@@ -1,7 +1,4 @@
-/**
- * SafeStash - Credential Form Component
- * APPDEV1 Final Project
- */
+
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CredentialService } from '../../services/credential.service';

@@ -17,7 +17,7 @@
             {{ visiblePasswords.has(item.id) ? item.password : '••••••••' }}
           </p>
           
-          <!-- NEW: Security Badge Integration -->
+          
           <app-security-status [isLeaked]="item.isLeaked || false"></app-security-status>
         </div>
 

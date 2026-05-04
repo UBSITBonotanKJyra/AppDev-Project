@@ -32,7 +32,7 @@ export class CredentialService {
     this.save(this.credentials().filter(c => c.id !== id));
   }
 
-  // 🌐 UPDATED BREACH CHECK (CONNECTS TO SERVER.JS)
+ 
   async checkBreach(username: string): Promise<boolean> {
     try {
       const res = await fetch(`http://localhost:3000/check-breach/${username}`);
@@ -42,7 +42,7 @@ export class CredentialService {
     } catch (err) {
       console.error('Server not running or unreachable:', err);
 
-      // fallback so app still works if backend is off
+     
       return ['test', 'admin', 'root'].includes(username.toLowerCase());
     }
   }

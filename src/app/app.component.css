@@ -1,4 +1,4 @@
-/* Main layout background */
+
 .main-layout {
   min-height: 100vh;
   padding: 20px;
@@ -6,7 +6,7 @@
   font-family: "Comic Sans MS", "Poppins", cursive;
 }
 
-/* Header */
+
 header {
   text-align: center;
   margin-bottom: 25px;
@@ -23,14 +23,14 @@ header p {
   font-size: 0.95rem;
 }
 
-/* Grid layout */
+
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
 }
 
-/* Sections */
+
 .form-section,
 .vault-section {
   background: #fff0f6;
@@ -41,13 +41,13 @@ header p {
   transition: 0.3s;
 }
 
-/* Hover lift effect */
+
 .form-section:hover,
 .vault-section:hover {
   transform: translateY(-3px);
 }
 
-/* Responsive (mobile) */
+
 @media (max-width: 768px) {
   .content-grid {
     grid-template-columns: 1fr;

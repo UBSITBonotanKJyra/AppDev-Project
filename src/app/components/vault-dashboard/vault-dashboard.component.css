@@ -1,4 +1,4 @@
-/* Container */
+
 .vault-container {
   padding: 20px;
   background: linear-gradient(135deg, #ffe4ec, #ffd6e8);
@@ -6,7 +6,7 @@
   font-family: "Comic Sans MS", "Poppins", cursive;
 }
 
-/* Header */
+
 .header {
   text-align: center;
   margin-bottom: 20px;
@@ -17,14 +17,14 @@
   font-size: 1.8rem;
 }
 
-/* Grid */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
 }
 
-/* Card */
+
 .card {
   background: #fff0f6;
   border-radius: 20px;
@@ -34,18 +34,18 @@
   transition: 0.3s;
 }
 
-/* Danger state */
+
 .card.danger {
   border-color: #ff8fab;
   background: #ffe4ec;
 }
 
-/* Hover */
+
 .card:hover {
   transform: translateY(-5px) scale(1.02);
 }
 
-/* Header inside card */
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -57,7 +57,7 @@
   font-size: 1.1rem;
 }
 
-/* Badge */
+
 .badge {
   background: #ffc0cb;
   color: #fff;
@@ -66,7 +66,7 @@
   font-size: 0.7rem;
 }
 
-/* Details */
+
 .details {
   margin-top: 10px;
   font-size: 0.85rem;
@@ -77,14 +77,14 @@
   color: #ff69b4;
 }
 
-/* Actions */
+
 .actions {
   margin-top: 12px;
   display: flex;
   justify-content: space-between;
 }
 
-/* Buttons */
+
 .actions button {
   border: none;
   background: #ffb6c1;
@@ -96,13 +96,13 @@
   font-size: 0.9rem;
 }
 
-/* Hover buttons */
+
 .actions button:hover {
   background: #ff69b4;
   transform: scale(1.1);
 }
 
-/* Delete button */
+
 .del-btn {
   background: #ff8fab;
 }
@@ -111,7 +111,7 @@
   background: #ff1493;
 }
 
-/* Empty state */
+
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;
