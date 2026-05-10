@@ -24,11 +24,8 @@ export class VaultDashboardComponent {
   }
 
   async checkSecurity(item: Credential) {
-    // Show a small loading hint if you want, but for now:
-    const leaked = await this.service.checkBreach(item.username);
-    item.isLeaked = leaked;
-    
-    // Save state back to local storage
-    this.service.save([...this.service.credentials()]);
+  const leaked = await this.service.checkBreach(item.username);
+  item.isLeaked = leaked;
+  console.log('Leak status updated:', item);
   }
 }

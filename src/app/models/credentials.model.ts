@@ -1,7 +1,6 @@
 export interface Credential {
-  id: string;
+  _id?: string;
   siteName: string;
-  siteUrl: string;
   username: string;
   password: string;
   category: 'Work' | 'Social' | 'Banking' | 'Personal';

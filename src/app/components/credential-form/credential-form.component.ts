@@ -15,12 +15,11 @@ export class CredentialFormComponent {
   service = inject(CredentialService);
 
   newEntry: Credential = {
-    id: '',
     siteName: '',
-    siteUrl: '',
     username: '',
     password: '',
-    category: 'Personal'
+    category: 'Personal',
+    isLeaked: false
   };
 
   submit() {
@@ -34,6 +33,6 @@ export class CredentialFormComponent {
   }
 
   reset() {
-    this.newEntry = { id: '', siteName: '', siteUrl: '', username: '', password: '', category: 'Personal' };
+    this.newEntry = { siteName: '', username: '', password: '', category: 'Personal', isLeaked: false };
   }
 }

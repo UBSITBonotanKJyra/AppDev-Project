@@ -1,49 +1,100 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Credential } from '../models/credentials.model';
+import { firstValueFrom } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
+
 export class CredentialService {
-  private storageKey = 'safestash_data';
-  credentials = signal<Credential[]>(this.loadStorage());
+
+  apiUrl = 'http://localhost:3000';
+
+  credentials = signal<Credential[]>([]);
 
   constructor(private http: HttpClient) {}
 
-  private loadStorage(): Credential[] {
-    const data = localStorage.getItem(this.storageKey);
-    return data ? JSON.parse(data) : [];
+  async add(item: Credential) {
+    try {
+      const response = await firstValueFrom(
+        this.http.post<any>(
+          `${this.apiUrl}/save-password`,
+          {
+            username: item.username,
+            siteName: item.siteName,
+            password: item.password
+          }
+        )
+      );
+
+      console.log('Saved:', response);
+
+      this.loadPasswords();
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  save(creds: Credential[]) {
-    localStorage.setItem(this.storageKey, JSON.stringify(creds));
-    this.credentials.set(creds);
+  async loadPasswords() {
+    try {
+      const data = await firstValueFrom(
+        this.http.get<Credential[]>(
+          `${this.apiUrl}/passwords`
+        )
+      );
+
+      this.credentials.set(data);
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  add(item: Credential) {
-    const newItem = {
-      ...item,
-      id: Date.now().toString(),
-      isLeaked: false
-    };
-    this.save([...this.credentials(), newItem]);
+  async delete(id: string) {
+    try {
+      await firstValueFrom(
+        this.http.delete(
+          `${this.apiUrl}/delete-password/${id}`
+        )
+      );
+
+      this.loadPasswords();
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  delete(id: string) {
-    this.save(this.credentials().filter(c => c.id !== id));
-  }
-
- 
   async checkBreach(username: string): Promise<boolean> {
     try {
-      const res = await fetch(`http://localhost:3000/check-breach/${username}`);
-      const data = await res.json();
+      const res: any = await firstValueFrom(
+        this.http.get(
+          `${this.apiUrl}/check-breach/${username}`
+        )
+      );
 
-      return data.isBreached;
-    } catch (err) {
-      console.error('Server not running or unreachable:', err);
+      return res.isBreached;
 
-     
-      return ['test', 'admin', 'root'].includes(username.toLowerCase());
+    } catch (error) {
+      console.error(error);
+
+      return false;
+    }
+  }
+
+  async updateLeakStatus(id: string, isLeaked: boolean) {
+    try {
+      await firstValueFrom(
+        this.http.put(
+          `${this.apiUrl}/update-leak/${id}`,
+          { isLeaked }
+        )
+      );
+
+    } catch (error) {
+      console.error(error);
     }
   }
 }
