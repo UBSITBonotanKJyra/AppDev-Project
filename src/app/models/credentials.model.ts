@@ -1,5 +1,5 @@
 export interface Credential {
-  _id?: string;
+  id: string;
   siteName: string;
   username: string;
   password: string;

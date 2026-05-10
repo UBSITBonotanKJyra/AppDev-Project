@@ -14,7 +14,7 @@ import { Credential } from '../../models/credentials.model';
 export class CredentialFormComponent {
   service = inject(CredentialService);
 
-  newEntry: Credential = {
+  newEntry: Partial<Credential> = {
     siteName: '',
     username: '',
     password: '',
@@ -23,16 +23,29 @@ export class CredentialFormComponent {
   };
 
   submit() {
-    if(this.newEntry.siteName && this.newEntry.password) {
-      this.service.add({...this.newEntry});
-      alert('Credential saved to vault!'); 
-      this.reset();
-    } else {
-      alert('Please fill in the required fields.');
-    }
+  if(this.newEntry.siteName && this.newEntry.password) {
+    // Create a complete Credential by adding a unique ID here
+    const entryToSave: Credential = {
+      ...this.newEntry,
+      id: crypto.randomUUID() 
+    } as Credential;
+
+    this.service.add(entryToSave);
+    
+    alert('Credential saved to vault!'); 
+    this.reset();
+  } else {
+    alert('Please fill in the required fields.');
+  }
   }
 
   reset() {
-    this.newEntry = { siteName: '', username: '', password: '', category: 'Personal', isLeaked: false };
+    this.newEntry = {
+    siteName: '',
+    username: '',
+    password: '',
+    category: 'Personal',
+    isLeaked: false
+    };
   }
 }
